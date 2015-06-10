@@ -1,6 +1,6 @@
 var hangmanController = function($scope) {
   
-  $scope.missesAllowed = 6;
+  $scope.missesAllowed = 8;
   
   var getRandomWord = function() {
     var index = Math.floor(Math.random() * words.length);
