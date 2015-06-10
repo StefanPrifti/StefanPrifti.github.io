@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS - Hangman The Beginning</title> 
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <html ng-app><head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+</head>
+
+<body ng-controller="hangmanController">
+<h1>Gjej fjalën!</h1>
+<h2>Pssst. Fjalët janë me temë nga jeta studentore në UPT.</h2>
+
+  <div class="secretWord">
+      <li ng-repeat="letter in secretWord">
+        <span ng-hide="letter.chosen">_</span>
+        <span ng-show="letter.chosen">{{ letter.name }}</span>
+      </li>
+    </ul>
+
+    <ul>
+      <li ng-repeat="letter in letters">
+        <button class="butonMeShkronje" ng-disabled="letter.chosen" ng-click="try(letter);">{{letter.name}}</button>
+      </li>
+    </ul>
+
+    <p>
+      <span ng-hide="win || lost">Ju keni edhe {{ missesAllowed - numMisses }} mundësi.</span>
+      <span ng-show="win">Ju fituat :)</span>
+      <span ng-show="lost">Ju humbët :/</span>
+    </p>
+  </div>
+
+  <button ng-show="win || lost" ng-click="reset();" class="butonLojeRe">Lojë e Re</button>
+</body>
+</html>
+
+<script src="js/index.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+  padding: 20px 40px;
+  font-family: "Verdana";
+}
+
+h1 {
+  margin: 20px;
+}
+
+h2 {
+	color: lightgrey;
+	font-weight: normal;
+	font-size: 16px;
+}
+
+*{
+  text-align: center;
+}
+
+.secretWord {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 3rem;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+li {
+	display: inline;
+}
+
+.butonMeShkronje,
+.butonLojeRe {
+	border: 1px solid #2E64FE;
+	background-color: #FFF;
+	padding: 10px;
+	font-size: 16px;
+	color: #2E64FE;
+	transition: .5s;
+	cursor: pointer;
+}
+
+.butonMeShkronje:hover,
+.butonLojeRe:hover {
+	background-color: #2E64FE;
+	color: #fff;
+}
+
+.butonLojeRe {
+	font-size: 22px;
+	border-radius: 5px;
+}
+
+.butonMeShkronje:disabled {
+	border: 1px solid red;
+	color: red;
+	background-color: #FFF;
+	transition: 0;
+}
+
+.secretWord ul {
+	width: 50%;
+	margin: 0 auto;
+}
+
+span {
+	font-size: 22px;
+}
