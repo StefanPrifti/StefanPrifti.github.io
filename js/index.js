@@ -61,4 +61,4 @@ var hangmanController = function($scope) {
   $scope.letters = makeLetters("abcçdeëfghijklmnopqrstuvxyz");
 };
 
-var words = ['provim', 'Universiteti', 'Politeknik', 'kopje', 'sezon', 'vjeshte', 'master', 'stilolaps', 'kater', 'teori', "inxhinieri"];
+var words = ['provim', 'Universiteti', 'Politeknik', 'kopje', 'sezon', 'vjeshtë', 'master', 'stilolaps', 'katër', 'teori', "inxhinieri", "fti", "upt"];
