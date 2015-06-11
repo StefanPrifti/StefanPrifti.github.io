@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Gjej fjaleën | UPT_mode: on; </title> 
+  <title>GjejFjalën | UPT_mode: on; </title> 
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,31 +14,31 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 </head>
 
-<body ng-controller="hangmanController">
-<h1>Gjej fjalën!</h1>
+<body ng-controller="GjejFjalen">
+<h1>GjejFjalën</h1>
 <h2>Pssst. Fjalët janë me temë nga jeta studentore në UPT.</h2>
 
   <div class="secretWord">
-      <li ng-repeat="letter in secretWord">
-        <span ng-hide="letter.chosen">_</span>
-        <span ng-show="letter.chosen">{{ letter.name }}</span>
+      <li ng-repeat="shkronja in fjalaSekrete">
+        <span ng-hide="shkronja.zgjedhur">_</span>
+        <span ng-show="shkronja.zgjedhur">{{ shkronja.vlera }}</span>
       </li>
     </ul>
 
     <ul>
-      <li ng-repeat="letter in letters">
-        <button class="butonMeShkronje" ng-disabled="letter.chosen" ng-click="try(letter);">{{letter.name}}</button>
+      <li ng-repeat="shkronja in alfabeti">
+        <button class="butonMeShkronje" ng-disabled="shkronja.zgjedhur" ng-click="try(zgjedhur);">{{shkronja.vlera}}</button>
       </li>
     </ul>
 
     <p>
-      <span ng-hide="win || lost">Ju keni edhe {{ missesAllowed - numMisses }} mundësi.</span>
-      <span ng-show="win">Ju fituat :)</span>
-      <span ng-show="lost">Ju humbët :/</span>
+      <span ng-hide="fitore || humbje">Ju keni edhe {{ nrMundesive - nrShkronjaveGabim }} mundësi.</span>
+      <span ng-show="fitore">Ju fituat :)</span>
+      <span ng-show="humbje">Ju humbët :/</span>
     </p>
   </div>
 
-  <button ng-show="win || lost" ng-click="reset();" class="butonLojeRe">Lojë e Re</button>
+  <button ng-show="fitore || humbje" ng-click="rifillo();" class="butonLojeRe">Lojë e Re</button>
 </body>
 </html>
 
