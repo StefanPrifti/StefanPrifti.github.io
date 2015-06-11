@@ -1,6 +1,6 @@
-var GjejFjalen = function($scope) {
+var GjejFjalen = function($global) {
 
-  $scope.nrMundesive = 8;
+  $global.nrMundesive = 8;
 
   var zgjidhNjeFjale = function() {
     var i = Math.floor(Math.random() * fjalori.length);
@@ -14,38 +14,38 @@ var GjejFjalen = function($scope) {
   };
 
   var shfaqFjalenSekrete = function() {
-    _.each($scope.fjalaSekrete, function(shkronja) {
+    _.each($global.fjalaSekrete, function(shkronja) {
       shkronja.zgjedhur = true;
     });
   };
 
   var kontrolloFundin = function() {
-    $scope.fitore = _.reduce($scope.fjalaSekrete, function(acc, shkronja) {
+    $global.fitore = _.reduce($global.fjalaSekrete, function(acc, shkronja) {
       return acc && shkronja.zgjedhur;
     }, true);
 
-    if (!$scope.fitore && $scope.nrShkronjaveGabim === $scope.nrMundesive) {
-      $scope.humbje = true;
+    if (!$global.fitore && $global.nrShkronjaveGabim === $global.nrMundesive) {
+      $global.humbje = true;
       shfaqFjalenSekrete();
     }
   }
 
-  $scope.rifillo = function() {
-    _.each($scope.alfabeti, function(shkronja) {
+  $global.rifillo = function() {
+    _.each($global.alfabeti, function(shkronja) {
       shkronja.zgjedhur = false;
     });
-    $scope.fjalaSekrete = listoShkronjat(zgjidhNjeFjale());
-    $scope.nrShkronjaveGabim = 0;
-    $scope.fitore = false;
-    $scope.humbje = false;
+    $global.fjalaSekrete = listoShkronjat(zgjidhNjeFjale());
+    $global.nrShkronjaveGabim = 0;
+    $global.fitore = false;
+    $global.humbje = false;
   };
 
-  $scope.rifillo();
+  $global.rifillo();
 
-  $scope.try = function(shkronjaShtypur) {
+  $global.provo = function(shkronjaShtypur) {
     shkronjaShtypur.zgjedhur = true;
     var uGjend = false;
-    _.each($scope.fjalaSekrete,
+    _.each($global.fjalaSekrete,
            function(shkronja) {
              if (shkronjaShtypur.vlera.toUpperCase() === shkronja.vlera.toUpperCase()) {
                shkronja.zgjedhur = true;
@@ -53,12 +53,12 @@ var GjejFjalen = function($scope) {
              }
            });
     if (!uGjend) {
-      $scope.nrShkronjaveGabim++;
+      $global.nrShkronjaveGabim++;
     }
     kontrolloFundin();
   };
 
-  $scope.alfabeti = listoShkronjat("abcçdeëfghijklmnopqrstuvxyz");
+  $global.alfabeti = listoShkronjat("abcçdeëfghijklmnopqrstuvxyz");
 };
 
 var fjalori = ['provim', 'Universiteti', 'Politeknik', 'kopje', 'sezon', 'teza', 'vjeshtë', 'master', 'stilolaps', 'katër', 'teori', "inxhinieri", "fti", "upt"];
