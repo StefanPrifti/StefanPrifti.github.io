@@ -7,8 +7,8 @@ var GjejFjalen = function($global) {
     return fjalori[i];
   };
 
-  var listoShkronjat = function(word) {
-    return _.map(word.split(''), function(shkronja) {
+  var listoShkronjat = function(fjala) {
+    return _.map(fjala.split(''), function(shkronja) {
       return { vlera: shkronja, zgjedhur: false };
     });
   };
