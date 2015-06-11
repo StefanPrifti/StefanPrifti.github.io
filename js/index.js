@@ -7,8 +7,8 @@ var GjejFjalen = function($scope) {
     return fjalori[i];
   };
 
-  var listoShkronjat = function(fjala) {
-    return _.map(fjala.split(''), function(shkronja) {
+  var listoShkronjat = function(word) {
+    return _.map(word.split(''), function(shkronja) {
       return { vlera: shkronja, zgjedhur: false };
     });
   };
@@ -42,7 +42,7 @@ var GjejFjalen = function($scope) {
 
   $scope.rifillo();
 
-  $scope.provo = function(shkronjaShtypur) {
+  $scope.try = function(shkronjaShtypur) {
     shkronjaShtypur.zgjedhur = true;
     var uGjend = false;
     _.each($scope.fjalaSekrete,
