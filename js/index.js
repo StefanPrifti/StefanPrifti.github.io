@@ -42,7 +42,7 @@ var GjejFjalen = function($global) {
 
   $global.rifillo();
 
-  $global.provo = function(shkronjaShtypur) {
+  $global.kontrollo = function(shkronjaShtypur) {
     shkronjaShtypur.zgjedhur = true;
     var uGjend = false;
     _.each($global.fjalaSekrete,
