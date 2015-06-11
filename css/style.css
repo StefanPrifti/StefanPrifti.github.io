@@ -72,7 +72,10 @@ span {
 }
 
 @media screen and (max-width: 720px) {
-    body {
-        background-color: lightblue;
-    }
+
+	.secretWord ul {
+		width: 90%;
+		margin: 0 auto;
+	}
+	
 }
