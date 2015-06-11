@@ -1,64 +1,64 @@
-var hangmanController = function($scope) {
-  
-  $scope.missesAllowed = 8;
-  
-  var getRandomWord = function() {
-    var index = Math.floor(Math.random() * words.length);
-    return words[index];
+var GjejFjalen = function($scope) {
+
+  $scope.nrMundesive = 8;
+
+  var zgjidhNjeFjale = function() {
+    var i = Math.floor(Math.random() * fjalori.length);
+    return fjalori[i];
   };
-  
-  var makeLetters = function(word) {
-    return _.map(word.split(''), function(character) {
-      return { name: character, chosen: false };
+
+  var listoShkronjat = function(word) {
+    return _.map(word.split(''), function(shkronja) {
+      return { vlera: shkronja, zgjedhur: false };
     });
   };
-  
-  var revealSecret = function() {
-    _.each($scope.secretWord, function(letter) {
-      letter.chosen = true;
+
+  var shfaqFjalenSekrete = function() {
+    _.each($scope.fjalaSekrete, function(shkronja) {
+      shkronja.zgjedhur = true;
     });
   };
-  
-  var checkForEndOfGame = function() {
-    $scope.win = _.reduce($scope.secretWord, function(acc, letter) {
-      return acc && letter.chosen;
+
+  var kontrolloFundin = function() {
+    $scope.fitore = _.reduce($scope.fjalaSekrete, function(acc, shkronja) {
+      return acc && shkronja.zgjedhur;
     }, true);
-    
-    if (!$scope.win && $scope.numMisses === $scope.missesAllowed) {
-      $scope.lost = true;
-      revealSecret();
+
+    if (!$scope.fitore && $scope.nrShkronjaveGabim === $scope.nrMundesive) {
+      $scope.humbje = true;
+      shfaqFjalenSekrete();
     }
   }
-  
-  $scope.reset = function() {
-    _.each($scope.letters, function(letter) {
-      letter.chosen = false;
+
+  $scope.rifillo = function() {
+    _.each($scope.alfabeti, function(shkronja) {
+      shkronja.zgjedhur = false;
     });
-    $scope.secretWord = makeLetters(getRandomWord());
-    $scope.numMisses = 0;
-    $scope.win = false;
-    $scope.lost = false;
+    $scope.fjalaSekrete = listoShkronjat(zgjidhNjeFjale());
+    $scope.nrShkronjaveGabim = 0;
+    $scope.fitore = false;
+    $scope.humbje = false;
   };
-  
-  $scope.reset();
-  
-  $scope.try = function(guess) {
-    guess.chosen = true;
-    var found = false;
-    _.each($scope.secretWord,
-           function(letter) {
-             if (guess.name.toUpperCase() === letter.name.toUpperCase()) {
-               letter.chosen = true;
-               found = true;
+
+  $scope.rifillo();
+
+  $scope.try = function(shkronjaShtypur) {
+    shkronjaShtypur.zgjedhur = true;
+    var uGjend = false;
+    _.each($scope.fjalaSekrete,
+           function(shkronja) {
+             if (shkronjaShtypur.vlera.toUpperCase() === shkronja.vlera.toUpperCase()) {
+               shkronja.zgjedhur = true;
+               uGjend = true;
              }
            });
-    if (!found) {
-      $scope.numMisses++;
+    if (!uGjend) {
+      $scope.nrShkronjaveGabim++;
     }
-    checkForEndOfGame();
+    kontrolloFundin();
   };
-  
-  $scope.letters = makeLetters("abcçdeëfghijklmnopqrstuvxyz");
+
+  $scope.alfabeti = listoShkronjat("abcçdeëfghijklmnopqrstuvxyz");
 };
 
-var words = ['provim', 'Universiteti', 'Politeknik', 'kopje', 'sezon', 'teza', 'vjeshtë', 'master', 'stilolaps', 'katër', 'teori', "inxhinieri", "fti", "upt"];
+var fjalori = ['provim', 'Universiteti', 'Politeknik', 'kopje', 'sezon', 'teza', 'vjeshtë', 'master', 'stilolaps', 'katër', 'teori', "inxhinieri", "fti", "upt"];
