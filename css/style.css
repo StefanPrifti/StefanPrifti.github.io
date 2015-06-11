@@ -70,3 +70,9 @@ li {
 span {
 	font-size: 22px;
 }
+
+@media screen and (max-width: 720px) {
+    body {
+        background-color: lightblue;
+    }
+}
