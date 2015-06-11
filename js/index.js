@@ -42,7 +42,7 @@ var GjejFjalen = function($scope) {
 
   $scope.rifillo();
 
-  $scope.try = function(shkronjaShtypur) {
+  $scope.provo = function(shkronjaShtypur) {
     shkronjaShtypur.zgjedhur = true;
     var uGjend = false;
     _.each($scope.fjalaSekrete,
