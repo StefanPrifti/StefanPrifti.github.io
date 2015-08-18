@@ -34,7 +34,7 @@ app.controller('mainData', function($scope, $http, $filter) {
 
 	}
 
-	$scope.price = 1000;
+	$scope.price = "1000";
 
 	//google maps
 	function initialize() {
