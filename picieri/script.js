@@ -27,8 +27,10 @@ app.controller('mainData', function($scope, $http, $filter) {
 	}
 
 	$scope.selectedPizzaDetails = angular.forEach($scope.pizzaList, function(pizza) {
-    	if( pizza.pizza_user_template._id ==  $scope.selectedPizza) 
+    	if( pizza.pizza_user_template._id ==  $scope.selectedPizza) {
+    		console.log(pizza);
     		return pizza;
+    	}
 	});
 
 
