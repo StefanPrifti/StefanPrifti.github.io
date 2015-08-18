@@ -35,7 +35,7 @@ app.controller('mainData', function($scope, $http, $filter) {
 				total = (i.quantity * i.ingredient.price);
 			});	   
 			
-			$scope.price = total.toString();
+			$scope.price = total + "";
 
 	    }
 
