@@ -11,23 +11,7 @@
   </head>
 
   <body ng-controller="mainData">
-    <h1>Hello Plunker!</h1>
-    <div id="content">
-      <div class="wrap full">
-        <div ng-init="names = [{name:'one'}, {name:'two'}, {name:'three'}, {name:'four'}, {name:'five'}]">
-          <ul class="nav nav-tabs" id="mytab">
-            <li ng-repeat="name in names"  ng-class="{active: $index == 0}">
-              <a href="#tab{{$index + 1}}" data-toggle="tab">Week {{$index + 1}}</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade in" id="tab{{$index + 1}}" ng-repeat="name in names">
-              <p>{{$index + 1}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1>Mirësevi tek picieri!</h1>
 
     <ul>
       <li ng-repeat="pizza in pizzaList">
