@@ -31,6 +31,14 @@
 
         <div class="col-md-8">
           <h2>{{selectedPizza.name}}</h2>
+
+          <h3>Lista e përbërësve</h3>
+          <ul>
+            <li ng-repeat="i in selectedPizza.ingredients">
+              {{i.ingredient.name}} {{i.quantity}}
+              <img src="http://porosit-pica.herokuapp.com/img/ingredients/{{i.ingredient.image}}" alt="">
+            </li>
+          </ul>
           {{selectedPizza}}
         </div>
       </div> 
