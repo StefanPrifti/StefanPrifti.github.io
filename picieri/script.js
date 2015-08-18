@@ -21,9 +21,10 @@ app.controller('mainData', function($scope, $http, $filter) {
 		$scope.isSelected = true;
 		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + pizzaID)
 	    .success(function (response) {
-	    	$scope.selectedPizza = response;
+	    	$scope.selectedPizza = response[0];
+	    	console.log($scope.selectedPizza);
 	    });
 	}
 
-	console.log($scope.selectedPizza);
+	
 });
