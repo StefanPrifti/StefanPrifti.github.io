@@ -4,4 +4,5 @@ li.list-group-item:first-child {
 
 .ingredient_image{
 	height: 60px;
+	float: right;
 }
