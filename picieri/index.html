@@ -9,22 +9,28 @@
   </head>
 
   <body ng-controller="mainData">
-    <h1>Mirësevi tek picieri!</h1>
+    
 
     <div class="container">
-        <ul class="nav nav-tabs">
-          <li ng-class="{active: listID == 0}"><a href="#" ng-click='setListID(0)'>Pritje</a></li>
-          <li ng-class="{active: listID == 1}"><a href="#" ng-click='setListID(1)'>Gatim</a></li>
-          <li ng-class="{active: listID == 2}"><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
-          <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
+    <h1>Lista e picave në shërbim</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="nav nav-tabs">
+            <li ng-class="{active: listID == 0}"><a href="#" ng-click='setListID(0)'>Pritje</a></li>
+            <li ng-class="{active: listID == 1}"><a href="#" ng-click='setListID(1)'>Gatim</a></li>
+            <li ng-class="{active: listID == 2}"><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
+            <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
+          </ul>
+        </div>
 
-        </ul>
-
-        <ul class="list-group">
-          <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
-            {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
-          </li>
-        </ul>  
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
+              {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
+            </li>
+          </ul> 
+        </div>
+      </div> 
     </div>
 
 
