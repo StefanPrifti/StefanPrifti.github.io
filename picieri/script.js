@@ -30,10 +30,11 @@ app.controller('mainData', function($scope, $http, $filter) {
 		});
 
 		// angular.forEach($scope.selectedPizza.ingredients, function(i) {
-	    $scope.price = 1000;
 		// });
 
 	}
+
+	$scope.price = 1000;
 
 	//google maps
 	function initialize() {
