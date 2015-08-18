@@ -54,3 +54,8 @@ a.list-group-item {
     float: left;
     margin-right: 1em;
 }
+
+span.text-right {
+	float: right;
+	color: #DF0101;
+}

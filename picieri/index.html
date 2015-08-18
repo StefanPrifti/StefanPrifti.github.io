@@ -42,7 +42,7 @@
           <ul class="list-group">
             <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
             <a href="#" ng-click='selectPizza(pizza.pizza_user_template._id)'>
-              {{pizza.pizza_user_template.name}} {{pizza.oreder_time}} 
+              {{pizza.pizza_user_template.name}} <span class="text-right">{{pizza.oreder_time}}</span> 
               </a>
             </li>
           </ul> 
