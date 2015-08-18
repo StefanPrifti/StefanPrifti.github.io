@@ -21,6 +21,8 @@ app.controller('mainData', function($scope, $http, $filter) {
 		$scope.selectedPizza = pizzaID;
 		$scope.isSelected = true;
 		$scope.selectedPizza = $filter('filter')($scope.pizzaList, function (p) {return p._id == $scope.selectedPizza;})[0];
+		console.log(pizzaID);
+		consloe.log($scope.selectedPizza);
 	}
 
 	console.log($scope.selectedPizza);
