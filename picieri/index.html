@@ -36,6 +36,11 @@
 
           <h3>Lista e përbërësve</h3>
           <ul class="list-group list-unstyled">
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:33%">
+                20cm
+              </div>
+            </div>
             <li ng-repeat="i in selectedPizza.ingredients">
               <a href="#" class="list-group-item">
                 <img class="ingredient_image" src="http://porosit-pica.herokuapp.com/img/ingredients/{{i.ingredient.image}}" alt="">
