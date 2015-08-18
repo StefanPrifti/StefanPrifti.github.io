@@ -74,7 +74,12 @@
 
             <h4>Adresa</h4>
             <p>{{selectedPizza.address}}</p>
-            <div id="map"></div>
+            <div>
+    <div id="map"></div>
+    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+    </div>
+</div>
           </div>          
         </div>
           {{selectedPizzaDetails.deliverer_id}}
