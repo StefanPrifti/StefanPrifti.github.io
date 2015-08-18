@@ -29,10 +29,11 @@
       </div>
     </div>
 
-    <table>
-      <tr ng-repeat="pizza in pizzaList">
-        <td>{{pizza.pizza_user_template.name}}</td>
-    </table>
+    <ul>
+      <li ng-repeat="pizza in pizzaList">
+        {{pizza.pizza_user_template.name}}
+      </li>
+    </ul>
 
   </body>
 
