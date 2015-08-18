@@ -57,16 +57,21 @@
             <ul>
               <li><span class="glyphicon glyphicon-earphone"></span> {{selectedPizza.user_id.phone}}</li>
               <li><span class="glyphicon glyphicon-envelope"></span> {{selectedPizza.user_id.email}}</li>
-              <li>{{selectedPizza.address}}</li>
+              <li>{{selectedPizzaDetails.address}}</li>
             </ul>
           </div>          
         </div>
-          {{selectedPizzaDetails}}
+          {{selectedPizzaDetails.deliverer_id}}
+          {{selectedPizzaDetails.pizzaiolo_id}}
+          {{selectedPizzaDetails.pizza_status}}
+          {{selectedPizzaDetails.orderCoords.latitude}}
+          {{selectedPizzaDetails.orderCoords.longitude}}
+          {{selectedPizzaDetails.oreder_time}}
+
+          {{selectedPizza}}
         </div>
       </div> 
     </div>
-
-
   </body>
 
 </html>
