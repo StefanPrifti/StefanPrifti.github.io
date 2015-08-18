@@ -22,10 +22,14 @@ app.controller('mainData', function($scope, $http, $filter) {
 		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + pizzaID)
 	    .success(function (response) {
 	    	$scope.selectedPizza = response[0];
-	   		$scope.selectedPizzaDetails  = $filter('filter')($scope.pizzaList, function (p) { return p.pizza_user_template.name == "julia"; })[0];
 	    });
 
 	}
+
+	$scope.selectedPizzaDetails = angular.forEach($scope.pizzaList, function(pizza) {
+    	if( pizza.pizza_user_template._id ==  $scope.selectedPizza) 
+    		return pizza;
+	});
 
 
 });
