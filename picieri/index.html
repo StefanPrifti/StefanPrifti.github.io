@@ -11,10 +11,12 @@
   <body ng-controller="mainData">
     <h1>Mirësevi tek picieri!</h1>
 
-    <select name="" id="">
-      <option value="">Lista e pritjeve</option>
-    </select>
-    
+    <li>
+      <ul><a href="">Pritje</a></ul>
+      <ul><a href="">Gatim</a></ul>
+      <ul><a href="">Pjekje</a></ul>
+    </li>
+
     <ul>
       <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList">
         {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
