@@ -11,19 +11,22 @@
   <body ng-controller="mainData">
     <h1>Mirësevi tek picieri!</h1>
 
-    <ul class="list-inline active">
-      <li><a href="#" ng-click='setListID(0)'>Pritje</a></li>
-      <li><a href="#" ng-click='setListID(1)'>Gatim</a></li>
-      <li><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
-      <li><a href="#" ng-click='setListID(3)'>Transport</a></li>
+    <div class="container">
+        <ul class="list-inline active list-group">
+          <li><a href="#" class="list-group-item" ng-click='setListID(0)'>Pritje</a></li>
+          <li><a href="#" class="list-group-item" ng-click='setListID(1)'>Gatim</a></li>
+          <li><a href="#" class="list-group-item" ng-click='setListID(2)'>Pjekje</a></li>
+          <li><a href="#" class="list-group-item" ng-click='setListID(3)'>Transport</a></li>
 
-    </ul>
+        </ul>
 
-    <ul>
-      <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList">
-        {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
-      </li>
-    </ul>
+        <ul>
+          <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList">
+            {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
+          </li>
+        </ul>  
+    </div>
+
 
   </body>
 
