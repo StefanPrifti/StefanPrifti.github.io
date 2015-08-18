@@ -7,4 +7,8 @@ app.controller('mainData', function($scope, $http) {
     .success(function (response) {$scope.pizzaList = response;});
 
     $scope.listID = 0;
+
+    $scope.setListID = function(id) {
+		$scope.listID = id;
+	}
 });
