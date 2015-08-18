@@ -22,8 +22,10 @@
             <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
           </ul>
           <ul class="list-group">
-            <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item" ng-click='selectPizza({{pizza._id}})'>
+            <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
+            <a href="#" ng-click='selectPizza({{pizza._id}})'>
               {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
+              </a>
             </li>
           </ul> 
         </div>
