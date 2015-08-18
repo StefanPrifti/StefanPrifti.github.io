@@ -79,16 +79,22 @@
 
             <h4>Adresa</h4>
             <p>{{selectedPizza.address}}</p>
-
-             <div id="map"></div>
-
-          </div>          
-        </div>
-          {{selectedPizzaDetails.deliverer_id}}
-          {{selectedPizzaDetails.pizzaiolo_id}}
-          {{selectedPizzaDetails.pizza_status}}
           {{selectedPizzaDetails.orderCoords.latitude}}
           {{selectedPizzaDetails.orderCoords.longitude}}
+          {{selectedPizzaDetails.deliverer_id.coords.latitude}}
+          {{selectedPizzaDetails.deliverer_id.coords.longitude}}
+
+            <h4>Stafi</h4>
+            <ul>
+              <li>Picieri: {{selectedPizzaDetails.pizzaiolo_id.name}} {{selectedPizzaDetails.pizzaiolo_id.surname}}</li>
+              <li>Shpërndarësi:  {{selectedPizzaDetails.deliverer_id.name}} {{selectedPizzaDetails.deliverer_id.surname}}</li>
+            </ul>
+          </div>          
+        </div>
+
+
+          
+          {{selectedPizzaDetails.pizza_status}}
           {{selectedPizzaDetails.oreder_time}}
 
           {{selectedPizza}}
