@@ -33,9 +33,14 @@ app.controller('mainData', function($scope, $http, $filter) {
 			angular.forEach($scope.selectedPizza.ingredients, function(i) {
 				total += (i.quantity * i.ingredient.price);
 				$scope.price = total + "shfaqu";
-			});	   
+			});	
+
+		var now = Date();
+	    var start = Date.parse($scope.selectedPizzaDetails.oreder_time);
+	    $scope.diffTime = (now.getTime() - start.getTime());   
 
 	}
+
 
 
 
