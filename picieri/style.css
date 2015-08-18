@@ -6,3 +6,7 @@ li.list-group-item:first-child {
 	height: 60px;
 	float: right;
 }
+
+a.list-group-item {
+	padding: 0;
+}
