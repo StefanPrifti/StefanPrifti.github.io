@@ -13,10 +13,10 @@
 
     <div class="container">
         <ul class="nav nav-tabs">
-          <li class="active" ><a href="#" ng-click='setListID(0)'>Pritje</a></li>
-          <li><a href="#" ng-click='setListID(1)'>Gatim</a></li>
-          <li><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
-          <li><a href="#" ng-click='setListID(3)'>Transport</a></li>
+          <li ng-class="{active: listID == 0}"><a href="#" ng-click='setListID(0)'>Pritje</a></li>
+          <li ng-class="{active: listID == 1}"><a href="#" ng-click='setListID(1)'>Gatim</a></li>
+          <li ng-class="{active: listID == 2}"><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
+          <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
 
         </ul>
 
