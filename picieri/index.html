@@ -20,8 +20,8 @@
 
         </ul>
 
-        <ul>
-          <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList">
+        <ul class="list-group">
+          <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
             {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
           </li>
         </ul>  
