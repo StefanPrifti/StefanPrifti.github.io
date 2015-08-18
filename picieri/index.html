@@ -12,7 +12,7 @@
     <h1>Mirësevi tek picieri!</h1>
 
     <ul>
-      <li ng-repeat="pizza in pizzaList">
+      <li ng-if="{{pizza.pizza_status == 0}}" ng-repeat="pizza in pizzaList">
         {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
       </li>
     </ul>
