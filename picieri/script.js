@@ -30,15 +30,10 @@ app.controller('mainData', function($scope, $http, $filter) {
 		});
 
 	    var total = 0;
-	    function pizzaDetails() {
 			angular.forEach($scope.selectedPizza.ingredients, function(i) {
 				total = (i.quantity * i.ingredient.price);
+				$scope.price = total + "";
 			});	   
-			
-			$scope.price = total + "";
-
-	    }
-
 
 	}
 
