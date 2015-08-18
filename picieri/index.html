@@ -11,11 +11,11 @@
   <body ng-controller="mainData">
     <h1>Mirësevi tek picieri!</h1>
 
-    <li>
-      <ul><a href="#" ng-click='setListID(0)'>Pritje</a></ul>
-      <ul><a href="#" ng-click='setListID(1)'>Gatim</a></ul>
-      <ul><a href="#" ng-click='setListID(2)'>Pjekje</a></ul>
-    </li>
+    <ul class="list-inline">
+      <li><a href="#" ng-click='setListID(0)'>Pritje</a></li>
+      <li><a href="#" ng-click='setListID(1)'>Gatim</a></li>
+      <li><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
+    </ul>
 
     <ul>
       <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList">
