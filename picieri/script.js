@@ -7,10 +7,8 @@ app.controller('mainData', function($scope, $http) {
     .success(function (response) {$scope.pizzaList = response;});
 
     $('#mytab').tab('show');
-});
 
-function NotebookListCtrl($scope) {
-  $scope.notebooks = [
+      $scope.notebooks = [
     {"name": "Lenovo",
      "procesor": "Intel i5",
      "age": 2011},
@@ -76,4 +74,4 @@ function NotebookListCtrl($scope) {
      "age": 2008}
   ];
   $scope.orderList = "name";
-}
+});
