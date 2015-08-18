@@ -21,14 +21,15 @@
             <li ng-class="{active: listID == 2}"><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
             <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
           </ul>
-        </div>
-
-        <div class="col-md-6">
           <ul class="list-group">
             <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
               {{pizza.pizza_user_template.name}} {{pizza.pizza_status}} {{pizza.oreder_time}}
             </li>
           </ul> 
+        </div>
+
+        <div class="col-md-6">
+          <p>Pizza's Content</p>
         </div>
       </div> 
     </div>
