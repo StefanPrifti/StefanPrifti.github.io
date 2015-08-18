@@ -2,7 +2,7 @@
 
 var app = angular.module('app', []);
 
-app.controller('mainData', function($scope, $http) {
+app.controller('mainData', function($scope, $http, $filter) {
     $http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
     .success(function (response) {$scope.pizzaList = response;});
 
