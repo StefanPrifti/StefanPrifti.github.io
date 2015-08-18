@@ -29,22 +29,12 @@
       </div>
     </div>
 
-    <div id="notebooks">
-      <input type="text" id="query" ng-model="query"/>
-      <select ng-model="orderList">
-        <option value="name">By name</option>
-        <option value="-age">Newest</option>
-        <option value="age">Oldest</option>
-      </select>
-      <ul id="notebook_ul">
-        <li ng-repeat="notebook in notebooks | filter:query | orderBy: orderList">
-          name: {{notebook.name}}<br/>
-          procesor: {{notebook.procesor}}<br/>
-          <div class="right top">{{notebook.age}}</div>
-        </li>
-      </ul>
-      <span>Number of notebooks: {{notebooks.length}}</span>
-    </div>
+    <table>
+      <tr ng-repeat="pizza in pizzaList">
+        <td>{{ x._id }}</td>
+        <td>{{ x.oreder_time }}</td>
+      </tr>
+    </table>
 
   </body>
 
