@@ -9,4 +9,6 @@ li.list-group-item:first-child {
 
 a.list-group-item {
 	padding: 0;
+	border: 0px;
+	border-bottom: 1px;
 }
