@@ -3,13 +3,15 @@ li.list-group-item:first-child {
 }
 
 .ingredient_image{
-	height: 40px;
+	height: 43px;
 	float: right;
 }
 
 a.list-group-item {
 	padding: 0;
 	border-radius: 0;
+	border-bottom-right-radius: 0; 
+    border-bottom-left-radius: 0;
 	border: 0px;
 	border-bottom: 1px solid lightgrey;
 }
