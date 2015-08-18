@@ -54,14 +54,15 @@
           <div class="col-md-5">
 
           <h3>Përbërja {{price}}</h3>
-          <div class="progress">
+          <p class="progress-label">Diametri: </p>
+          <div class="progress">              
               <div class="progress-bar progress-bar-warning" role="progressbar" style="width:33%">
                 20cm
               </div>
           </div>
           <ul class="list-group list-unstyled">
             <li ng-repeat="i in selectedPizza.ingredients">
-              <a href="#" class="list-group-item">
+              <a href="#" class="list-group-item bg_{{i.quantity}}">
                 <img class="ingredient_image" src="http://porosit-pica.herokuapp.com/img/ingredients/{{i.ingredient.image}}" alt="">
                 <h4 class="list-group-item-heading">{{i.ingredient.name}}</h4>
                 <p class="list-group-item-text">{{i.quantity}}</p>

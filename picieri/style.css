@@ -12,11 +12,41 @@ a.list-group-item {
 	border-radius: 0;
 	border-bottom-right-radius: 0; 
     border-bottom-left-radius: 0;
+    border-top-right-radius: 0; 
+    border-top-left-radius: 0;
 	border: 0px;
-	border-bottom: 1px solid lightgrey;
+	border-bottom: 1px solid white;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+     border-bottom-right-radius: 0; 
+     border-bottom-left-radius: 0; 
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 #map {
     height:500px;
     width:400px;
+}
+
+.bg_1 {	background-color: #F6E3CE; }
+.bg_1 h4, .bg_1 p {	color: #FAAC58; }
+
+.bg_2 {	background-color: #F5D0A9; }
+.bg_2 h4, .bg_2 p {	color: #FE9A2E; }
+
+.bg_3 {	background-color: #F7BE81; }
+.bg_3 h4, .bg_3 p {	color: #FF8000; }
+
+.bg_4 {	background-color: #FAAC58; }
+.bg_4 h4, .bg_4 p {	color: #DF7401; }
+
+.progress-label {
+    float: left;
+    margin-right: 1em;
 }

@@ -37,7 +37,9 @@ app.controller('mainData', function($scope, $http, $filter) {
 
 		var now = Date();
 	    var start = Date.parse($scope.selectedPizzaDetails.oreder_time);
-	    $scope.diffTime = (now.getTime() - start.getTime());   
+	    var diff = (now.getTime() - start.getTime());   
+	    diff = Math.round(diff / (1000 * 60));
+	    $scope.diffTime = diff + " minuta";
 
 	}
 
