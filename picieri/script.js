@@ -29,12 +29,20 @@ app.controller('mainData', function($scope, $http, $filter) {
 	    	}
 		});
 
-		// angular.forEach($scope.selectedPizza.ingredients, function(i) {
-		// });
+	    var total = 0;
+	    function pizzaDetails() {
+			angular.forEach($scope.selectedPizza.ingredients, function(i) {
+				total = (i.quantity * i.ingredient.price);
+			});	   
+			
+			$scope.price = total.toString();
+
+	    }
+
 
 	}
 
-	$scope.price = "1000";
+
 
 	//google maps
 	function initialize() {
