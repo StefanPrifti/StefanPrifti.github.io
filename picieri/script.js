@@ -24,13 +24,15 @@ app.controller('mainData', function($scope, $http, $filter) {
 	    	$scope.selectedPizza = response[0];
 	    });
 
+	    pizzaDetails();
+
 	    angular.forEach($scope.pizzaList, function(pizza) {
 	    	if( pizza.pizza_user_template._id ==  $scope.selectedPizza) {
 	    		$scope.selectedPizzaDetails = pizza;
 	    	}
 		});
 
-		pizzaDetails();
+
 
 	}
 
