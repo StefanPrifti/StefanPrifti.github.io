@@ -15,3 +15,8 @@ a.list-group-item {
 	border: 0px;
 	border-bottom: 1px solid lightgrey;
 }
+
+      #map {
+        width: 500px;
+        height: 400px;
+      }
