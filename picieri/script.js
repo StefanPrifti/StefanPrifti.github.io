@@ -31,7 +31,7 @@ app.controller('mainData', function($scope, $http, $filter) {
 
 	    var total = 0;
 			angular.forEach($scope.selectedPizza.ingredients, function(i) {
-				total = (i.quantity * i.ingredient.price);
+				total += (i.quantity * i.ingredient.price);
 				$scope.price = total + "shfaqu";
 			});	   
 
