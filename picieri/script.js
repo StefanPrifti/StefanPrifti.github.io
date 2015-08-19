@@ -1,6 +1,7 @@
 
 var app = angular.module('app', []);
 
+
 app.controller('mainData', function($scope, $http, $filter) {
     $http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
     .success(function (response) {
@@ -8,54 +9,78 @@ app.controller('mainData', function($scope, $http, $filter) {
     });
 
     $scope.listID = 0;
-    $scope.selectedPizza = null;
+    $scope.selectedPizzaID = null;
     $scope.isSelected = false;
+	$scope.pizzaDetails = {
+		price : 0,
+		diameter : 0,
+		diameter_cm : 0,
+		diameter_percent : 0,
+		diameter_coeficient : 0
+	};
+	$scope.pizzaStatusArray = ["në pritje", "në gatim", "në pjekje", "në shpërndarje", "u dorëzua"];
+	$scope.pizzaQuantityArray = ["fare", "pak", "normal", "ekstra", "dyfish"];
 
     $scope.setListID = function(id) {
 		$scope.listID = id;
 	}
 
 	$scope.selectPizza = function(pizzaID) {
-		$scope.selectedPizza = pizzaID;
+		$scope.selectedPizzaID = pizzaID;
 		$scope.isSelected = true;
 		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + pizzaID)
 	    .success(function (response) {
 	    	$scope.selectedPizza = response[0];
+
+	    	setDiameterStats($scope.selectedPizza.diameter);
+
+	    	$scope.pizzaDetails.price = 0;
+		    angular.forEach($scope.selectedPizza.ingredients, function(i, index) {
+				$scope.pizzaDetails.price += (i.quantity * i.ingredient.price);
+
+				if (index == $scope.selectedPizza.ingredients.length - 1)
+					$scope.pizzaDetails.price *= $scope.pizzaDetails.diameter_coeficient;
+			});
+
+
 	    });
 
 	    angular.forEach($scope.pizzaList, function(pizza) {
-	    	if( pizza.pizza_user_template._id ==  $scope.selectedPizza) {
+	    	if( pizza.pizza_user_template._id ==  $scope.selectedPizzaID) {
 	    		$scope.selectedPizzaDetails = pizza;
+				$scope.status = $scope.pizzaStatusArray[$scope.selectedPizzaDetails.pizza_status];
 	    	}
 		});
 
-	    var total = 0;
-			angular.forEach($scope.selectedPizza.ingredients, function(i) {
-				total += (i.quantity * i.ingredient.price);
-				$scope.price = total + "shfaqu";
-			});	
-
-		var now = Date();
-	    var start = Date.parse($scope.selectedPizzaDetails.oreder_time);
-	    var diff = (now.getTime() - start.getTime());   
-	    diff = Math.round(diff / (1000 * 60));
-	    $scope.diffTime = diff + " minuta";
 
 	}
 
+	function setDiameterStats (diameterNum) {
+		switch(diameterNum){
+			case 0:
+				$scope.pizzaDetails.diameter_cm = 20;
+				$scope.pizzaDetails.diameter_percent = 33.3;
+				$scope.pizzaDetails.diameter_coeficient = 1;
+				break;
+			case 1:
+				$scope.pizzaDetails.diameter_cm = 30;
+				$scope.pizzaDetails.diameter_percent = 50;
+				$scope.pizzaDetails.diameter_coeficient = 1.2;
+				break;
+			case 2:
+				$scope.pizzaDetails.diameter_cm = 40;
+				$scope.pizzaDetails.diameter_percent = 66.6;
+				$scope.pizzaDetails.diameter_coeficient = 1.5;
+				break;
+			case 3:
+				$scope.pizzaDetails.diameter_cm = 60;
+				$scope.pizzaDetails.diameter_percent = 100;
+				$scope.pizzaDetails.diameter_coeficient = 1.8;
+				break;
+		}
+	}
 
 
-
-	//google maps
-	function initialize() {
-        var mapCanvas = document.getElementById('map');
-        var mapOptions = {
-          center: new google.maps.LatLng(44.5403, -78.5463),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+		// $scope
 
 });

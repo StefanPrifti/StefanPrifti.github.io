@@ -2,11 +2,12 @@
 <html ng-app="app">
 
   <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link data-require="bootstrap-css@*" data-semver="3.3.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <script data-require="angular.min.js@1.4.5" data-semver="1.4.4" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
   </head>
 
   <body ng-controller="mainData">
@@ -48,24 +49,26 @@
           </ul> 
         </div>
 
-        <div ng-show="isSelected" class="col-md-8">
-        <h2><span class="text-danger" style="font-size:13px;">PICA</span> {{selectedPizza.name}}  <small>në pritje</small></h2>
+        <div ng-if="isSelected" class="col-md-8">
+        <h2 style="margin-top:27px;">{{selectedPizza.name}}  <small>{{status}}</small> 
+                                      <span class="orderedTime">{{selectedPizzaDetails.oreder_time}}</span></h2>
+        <hr class="soften" />
         <div class="row">
           <div class="col-md-5">
 
-          <h3 class="text-info">Përbërja {{price}}</h3>
+          <h3 class="text-info">Përbërja <span class="lb-price">{{pizzaDetails.price}}</span></h3>
           <p class="progress-label">Diametri: </p>
           <div class="progress">              
-              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:33%">
-                20cm
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{pizzaDetails.diameter_percent}}%">
+                {{pizzaDetails.diameter_cm}} cm
               </div>
           </div>
           <ul class="list-group list-unstyled">
             <li ng-repeat="i in selectedPizza.ingredients">
               <a href="#" class="list-group-item bg_{{i.quantity}}">
                 <img class="ingredient_image" src="http://porosit-pica.herokuapp.com/img/ingredients/{{i.ingredient.image}}" alt="">
-                <h4 class="list-group-item-heading">{{i.ingredient.name}}</h4>
-                <p class="list-group-item-text">{{i.quantity}}</p>
+                <h4 class="list-group-item-heading" style="padding-left:10px;">{{i.ingredient.name}}</h4>
+                <p class="list-group-item-text quantityToString">{{ pizzaQuantityArray[i.quantity] }}</p>
               </a>            
             </li>
           </ul>
@@ -92,13 +95,6 @@
             </ul>
           </div>          
         </div>
-
-
-          
-          {{selectedPizzaDetails.pizza_status}}
-          {{selectedPizzaDetails.oreder_time}}
-          {{selectedPizza.diameter}}
-          {{diffTime}}
         </div>
         <div ng-hide="isSelected" class="col-md-8">
           <div class="jumbotron">
