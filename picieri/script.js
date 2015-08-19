@@ -1,5 +1,5 @@
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngMap', 'angularMoment']);
 
 
 app.controller('mainData', function($scope, $http, $filter) {
@@ -79,6 +79,8 @@ app.controller('mainData', function($scope, $http, $filter) {
 				break;
 		}
 	}
+
+
 
 
 		// $scope

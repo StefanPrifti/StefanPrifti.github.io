@@ -34,8 +34,8 @@ a.list-group-item {
 }
 
 #map {
-    height:500px;
-    width:400px;
+    height:300px;
+    width:300px;
 }
 
 .bg_1 {	background-color: #F6E3CE; }
@@ -89,6 +89,18 @@ hr.soften {
 
 .orderedTime {
     float: right;
-    font-size: 16px;
+    font-size: 14px;
     color: #31708f;
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.orderedTime::before {
+    content: "Porositur më: ";
+    font-size: 12px;
+}
+
+.glyphicon {
+    padding-left: 15px;
+    padding-right: 10px;
 }
