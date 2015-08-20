@@ -1,6 +1,11 @@
 
 var app = angular.module('app', ['ngMap', 'angularMoment']);
 
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
 
 app.controller('mainData', function($scope, $http, $filter) {
     $http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
@@ -51,8 +56,6 @@ app.controller('mainData', function($scope, $http, $filter) {
 				$scope.status = $scope.pizzaStatusArray[$scope.selectedPizzaDetails.pizza_status];
 	    	}
 		});
-
-
 	}
 
 	function setDiameterStats (diameterNum) {
@@ -80,9 +83,15 @@ app.controller('mainData', function($scope, $http, $filter) {
 		}
 	}
 
+	$scope.logIn = function () {
 
-
-
+		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
+		then(function(response) {
+		    console.log(response);
+		}, function(response) {
+		    console.log("Ndodhi nje gabim" + response);
+		});
+	}
 		// $scope
 
 });

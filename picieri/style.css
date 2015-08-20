@@ -84,7 +84,8 @@ span.text-right {
 }
 
 hr.soften {
-  background-color: #ddd;
+    border: 0px;
+  border-bottom: 1px solid #ddd;
 }
 
 .orderedTime {
@@ -93,6 +94,7 @@ hr.soften {
     color: #31708f;
     margin-right: 20px;
     font-weight: normal;
+    margin-top: -10px;
 }
 
 .orderedTime::before {
@@ -103,4 +105,9 @@ hr.soften {
 .glyphicon {
     padding-left: 15px;
     padding-right: 10px;
+}
+
+.navbar {
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px;
 }
