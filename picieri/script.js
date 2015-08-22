@@ -11,7 +11,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/',
-            templateUrl: 'partials/main.html'
+            templateUrl: 'partials/main.html',
+            access: {
+            	requiresLogin: true
+        	}
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
@@ -24,6 +27,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         //$locationProvider.html5Mode(true);
         
 });
+
+app.run(function($rootScope, $location) {
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ($rootScope.loggedInUser == null) {
+        // no logged user, redirect to /login
+        if ( next.templateUrl === "partials/identifikohu.html") {
+        } else {
+          $location.path("/identifikohu");
+        }
+      }
+    });
+  });
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
@@ -134,12 +149,17 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 
 		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
 		then(function(response) {
+
+			$rootScope.loggedInUser = response.data.token;
+			
 			$scope.user = response.data.token;
 			localStorage.setItem("picieriID", response.data.id);
 			localStorage.setItem("picieriToken", response.data.token);
 			localStorage.setItem("loggedOut", false);
 			
 		    console.log(response.data);
+    		$location.path("/");
+
 		}, function(response) {
 		    console.log("Deshtim, mbase me CORS " + response);
 		});
