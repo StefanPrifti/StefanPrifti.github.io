@@ -21,9 +21,17 @@
 
   <body ng-controller="mainData">
           <!-- Static navbar -->
-      <nav class="navbar navbar-default row">
-        <div class="container-fluid col-md-12">
+      <nav class="navbar navbar-default">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="container-fluid">
           <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img alt="Picieri" src="pizza_logo.png" style="width:65px; margin-top:-10px;">
+      
+            </a>
             <a class="navbar-brand" href="#">Picieri</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
@@ -31,11 +39,13 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Cilësime <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-fixed-top/">Dil</a></li>
+              <li><a href="#" ng-click="logOut()">Dil</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
+        </div>
+        </div>
+        </div>
       </nav>
 
     <div class="container">
@@ -59,7 +69,12 @@
         </div>
 
         <div ng-if="isSelected" class="col-md-8">
-        <h2 style="margin-top:27px;">{{selectedPizza.name}}  <small>{{status}}</small> </h2>
+        <div class="statusButton">
+            <button ng-if="selectedPizzaDetails.pizza_status == 0" type="button" class="btn btn-primary" ng-click="setPizzaStatus(1)">Gatuaje!</button>
+            <button ng-if="selectedPizzaDetails.pizza_status == 1" type="button" class="btn btn-success" ng-click="setPizzaStatus(2)">Piqe!</button>
+            <button ng-if="selectedPizzaDetails.pizza_status == 2" type="button" class="btn btn-warning" ng-click="setPizzaStatus(3)">Shpërndaje!</button>
+        </div>
+        <h2 style="margin-top:27px;">{{selectedPizza.name}}  <small>{{status}}</small></h2>
         <hr class="soften" />
         <span class="orderedTime"><time>{{ selectedPizzaDetails.oreder_time | amCalendar }}</time></span>
         <div class="row">
@@ -91,7 +106,7 @@
               <li><span class="glyphicon glyphicon-envelope" style="color: #31708f"></span> {{selectedPizza.user_id.email}}</li>
             </ul>
 
-            <h4>Adresa</h4>
+            <h4>Adresa  {{distance}}</h4>
             <p>{{selectedPizza.address}}</p>
             <map center="{{selectedPizzaDetails.orderCoords.latitude}}, {{selectedPizzaDetails.orderCoords.longitude}}" zoom="14">
               <marker position="{{selectedPizzaDetails.orderCoords.latitude}}, {{selectedPizzaDetails.orderCoords.longitude}}" title="Klienti"></marker>
@@ -118,6 +133,9 @@
         </div>
       </div> 
     </div>
+
+    {{picieriID}}
+    {{picieriToken}}
 
   </body>
 

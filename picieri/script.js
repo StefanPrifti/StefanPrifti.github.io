@@ -1,18 +1,16 @@
 
 var app = angular.module('app', ['ngMap', 'angularMoment']);
 
-app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
 
-app.controller('mainData', function($scope, $http, $filter) {
-    $http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
-    .success(function (response) {
-    	$scope.pizzaList = response;
-    });
+app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
+	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
+	.success(function (response) {
+	    $scope.pizzaList = response;
+	});
+
+
+	$scope.distance = "?";
     $scope.listID = 0;
     $scope.selectedPizzaID = null;
     $scope.isSelected = false;
@@ -33,7 +31,7 @@ app.controller('mainData', function($scope, $http, $filter) {
 	$scope.selectPizza = function(pizzaID) {
 		$scope.selectedPizzaID = pizzaID;
 		$scope.isSelected = true;
-		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + pizzaID)
+		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + pizzaID, {token: $scope.picieriToken})
 	    .success(function (response) {
 	    	$scope.selectedPizza = response[0];
 
@@ -46,6 +44,17 @@ app.controller('mainData', function($scope, $http, $filter) {
 				if (index == $scope.selectedPizza.ingredients.length - 1)
 					$scope.pizzaDetails.price *= $scope.pizzaDetails.diameter_coeficient;
 			});
+
+		if ($scope.selectedPizzaDetails.orderCoords.latitude > 0) {
+			$http.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=41.319155,19.793342&destinations=41.327583,%2019.808561&mode=driving&language=en-US&key=AIzaSyCEjAzac7pwBhe3L4bU3Ii5IPrP95bzE5E")
+			.then(function (response) {
+				console.log(response);
+				
+			}, function (response) {
+
+			});
+		}
+
 
 
 	    });
@@ -83,15 +92,81 @@ app.controller('mainData', function($scope, $http, $filter) {
 		}
 	}
 
+	$scope.picieriID = localStorage.getItem("picieriID");
+	$scope.picieriToken = localStorage.getItem("picieriToken");
+
+	$scope.logOut = function () {
+		localStorage.removeItem("picieriID");
+		localStorage.removeItem("picieriToken");
+		localStorage.setItem("loggedOut", true);
+		localStorage.setItem("stopSecodTime", false);
+
+
+		$scope.picieriID = null;
+		$scope.picieriToken = null;
+		$window.location.href = 'identifikohu.html';
+	}
+
 	$scope.logIn = function () {
 
 		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
 		then(function(response) {
-		    console.log(response);
+			$scope.user = response.data.token;
+			localStorage.setItem("picieriID", response.data.id);
+			localStorage.setItem("picieriToken", response.data.token);
+			localStorage.setItem("loggedOut", false);
+			
+		    console.log(response.data);
 		}, function(response) {
-		    console.log("Ndodhi nje gabim" + response);
+		    console.log("Deshtim, mbase me CORS " + response);
 		});
 	}
-		// $scope
+
+
+	$scope.getPizzaList = function () {
+		var getBack = null;
+		$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
+		.success(function (response) {
+		    getBack = response;
+		});
+
+		return getBack;
+	}
+
+	$scope.getSelectedPizza = function () {
+		var getBack = null;
+		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + $scope.selectedPizzaID)
+		.success(function (response) {
+		    getBack = response[0];
+		});	
+		return getBack;
+	}	
+
+	$scope.setPizzaStatus = function (setStatus) {
+
+		$http.post('http://porosit-pica.herokuapp.com/api/setpizzastatus', { userID: $scope.picieriID, pizzaID: $scope.selectedPizzaID, statusNum: setStatus }).
+		then(function(response) {
+			$q.all([
+			    $http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas"),
+			    $http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + $scope.selectedPizzaID)
+			]).then(function(values){
+			    $scope.pizzaList = values[0].data;
+			    $scope.selectedPizza = values[1].data[0];
+
+			    angular.forEach($scope.pizzaList, function(pizza) {
+			    	if( pizza.pizza_user_template._id ==  $scope.selectedPizzaID) {
+			    		$scope.selectedPizzaDetails = pizza;
+						$scope.status = $scope.pizzaStatusArray[$scope.selectedPizzaDetails.pizza_status];
+			    	}
+				});
+
+				$scope.listID++;
+			});
+
+		}, function(response) {
+	
+		    console.log("Deshtim, mbase me CORS " + response);
+		});
+	}	
 
 });
