@@ -156,7 +156,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 			
 		    console.log(response.data);
 
-		    if (response.data.success == true)
+		    if (typeof response.data.id !== "undefined")
     			$location.path("/");
 
 		}, function(response) {
