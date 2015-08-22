@@ -31,10 +31,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
-	if ( (typeof $scope.picieriToken !== "undefined") || ($scope.picieriToken == null) ) 
-		$location.path("/identifikohu");
-	else
+	if (!((typeof $scope.picieriToken !== "undefined") || ($scope.picieriToken == null)))
 		$location.path("/");
+	else
+		$location.path("/identifikohu");
 
 	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
 	.success(function (response) {
