@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
-	if ($rootScope.picieriToken == null)
+	if ( (typeof $scope.picieriToken !== "undefined") || ($scope.picieriToken == null) ) 
 		$location.path("/identifikohu");
 	else
 		$location.path("/");
