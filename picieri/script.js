@@ -31,16 +31,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.run(function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if ($rootScope.loggedInUser == null) {
-        
         $location.path("/identifikohu");
-        
-        if ( next.templateUrl === "partials/identifikohu.html") {
-        } else {
-          $location.path("/identifikohu");
+	  } else {
+          $location.path("/");
         }
       }
     });
-  });
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
