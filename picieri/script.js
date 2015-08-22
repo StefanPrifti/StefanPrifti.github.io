@@ -4,7 +4,7 @@ var app = angular.module('app', ['ngMap', 'angularMoment', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/identifikohu');
     
     $stateProvider
         
@@ -12,9 +12,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('home', {
             url: '/',
             templateUrl: 'partials/main.html',
-            access: {
-            	requiresLogin: true
-        	}
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
