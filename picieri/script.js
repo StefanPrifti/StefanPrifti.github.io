@@ -124,7 +124,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		}
 	}
 
-	if (ocalStorage.getItem("picieriID") != null) 
+	if (localStorage.getItem("picieriID") != null) 
 	{
 		$scope.picieriID = localStorage.getItem("picieriID");
 		$scope.picieriToken = localStorage.getItem("picieriToken");
