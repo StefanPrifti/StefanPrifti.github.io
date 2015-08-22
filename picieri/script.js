@@ -131,6 +131,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 	}
 
 	console.log(localStorage.getItem("picieriID"));
+	console.log($scope.picieriID);
 
 	$scope.logOut = function () {
 		localStorage.removeItem("picieriID");
