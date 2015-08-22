@@ -29,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
+app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q, $locationProvider) {
 
 	console.log($scope.picieriToken);
 
