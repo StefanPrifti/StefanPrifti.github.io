@@ -30,6 +30,9 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 
 	console.log($scope.picieriToken);
 
+	if (location.hash == "/")
+		$location.path("/identifikohu");
+
 	if ((typeof $scope.picieriToken === "undefined") || ($scope.picieriToken == null))
 		$location.path("/identifikohu");
 	else
