@@ -126,11 +126,11 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		}
 	}
 
-	// if (localStorage.getItem("picieriID") != null) 
-	// {
-	// 	$scope.picieriID = localStorage.getItem("picieriID");
-	// 	$scope.picieriToken = localStorage.getItem("picieriToken");
-	// }
+	if (localStorage.getItem("picieriID") != null) 
+	{
+		$scope.picieriID = localStorage.getItem("picieriID");
+		$scope.picieriToken = localStorage.getItem("picieriToken");
+	}
 
 	// console.log(localStorage.getItem("picieriID"));
 	// console.log($scope.picieriID);
