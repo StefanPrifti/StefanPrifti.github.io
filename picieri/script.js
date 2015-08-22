@@ -30,11 +30,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.run(function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if ($rootScope.loggedInUser == null) {
-        $location.path("/identifikohu");
-	  } else {
-          $location.path("/");
-        }
+
+    	console.log($rootScope.loggedInUser);
+    	$location.path("/identifikohu");
+   //    if ($rootScope.loggedInUser == null) {
+   //      $location.path("/identifikohu");
+	  // } else {
+   //        $location.path("/");
+   //      }
       });
     });
 
