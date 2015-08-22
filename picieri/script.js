@@ -9,7 +9,6 @@ app.config(['$stateProvider', function ($stateProvider) {
             identifikohu = {
                 name: 'identifikohu',
                 url: '/identifikohu',
-                parent: home,
                 templateUrl: 'partials/identifikohu.html'
             };
 
