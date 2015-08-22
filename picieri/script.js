@@ -31,7 +31,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.run(function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if ($rootScope.loggedInUser == null) {
-        // no logged user, redirect to /login
+        
+        $location.path("/identifikohu");
+        
         if ( next.templateUrl === "partials/identifikohu.html") {
         } else {
           $location.path("/identifikohu");
