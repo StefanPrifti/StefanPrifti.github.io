@@ -2,7 +2,7 @@
 var app = angular.module('app', ['ngMap', 'angularMoment', 'ui.router']);
 // app.js
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     
     $urlRouterProvider.otherwise('/');
     
@@ -21,7 +21,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         });
 
         // use the HTML5 History API
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
         
 });
 
