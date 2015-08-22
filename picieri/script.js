@@ -149,6 +149,8 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
 		then(function(response) {
 
+			$scope.user = response.data;
+
 			$scope.picieriID = response.data.id;
 			$scope.picieriToken = response.data.token;
 			localStorage.setItem("picieriID", response.data.id);
