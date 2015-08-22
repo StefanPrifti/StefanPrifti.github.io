@@ -35,7 +35,7 @@ app.run(function($rootScope, $location) {
 	  } else {
           $location.path("/");
         }
-      }
+      });
     });
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
