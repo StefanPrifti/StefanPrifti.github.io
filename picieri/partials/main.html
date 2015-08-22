@@ -1,0 +1,115 @@
+ <nav class="navbar navbar-default">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img alt="Picieri" src="pizza_logo.png" style="width:65px; margin-top:-10px;">
+      
+            </a>
+            <a class="navbar-brand" href="#">Picieri</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" ng-click="logOut()">Dil</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+        </div>
+        </div>
+        </div>
+      </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        <!-- {{(pizzaList | filter:{pizza_status == 0}).length}} -->
+        <h4>Lista e picave në shërbim</h4>
+          <ul class="nav nav-tabs">
+            <li ng-class="{active: listID == 0}"><a href="#" ng-click='setListID(0)'>Pritje</a></li>
+            <li ng-class="{active: listID == 1}"><a href="#" ng-click='setListID(1)'>Gatim</a></li>
+            <li ng-class="{active: listID == 2}"><a href="#" ng-click='setListID(2)'>Pjekje</a></li>
+            <li ng-class="{active: listID == 3}"><a href="#" ng-click='setListID(3)'>Transport</a></li>
+          </ul>
+          <ul class="list-group">
+            <li ng-if="pizza.pizza_status == listID" ng-repeat="pizza in pizzaList" class="list-group-item">
+            <a href="#" ng-click='selectPizza(pizza.pizza_user_template._id)'>
+              {{pizza.pizza_user_template.name}} <span class="text-right"><time am-time-ago="pizza.oreder_time"></time></span> 
+              </a>
+            </li>
+          </ul> 
+        </div>
+
+        <div ng-if="isSelected" class="col-md-8">
+        <div class="statusButton">
+            <button ng-if="selectedPizzaDetails.pizza_status == 0" type="button" class="btn btn-primary" ng-click="setPizzaStatus(1)">Gatuaje!</button>
+            <button ng-if="selectedPizzaDetails.pizza_status == 1" type="button" class="btn btn-success" ng-click="setPizzaStatus(2)">Piqe!</button>
+            <button ng-if="selectedPizzaDetails.pizza_status == 2" type="button" class="btn btn-warning" ng-click="setPizzaStatus(3)">Shpërndaje!</button>
+        </div>
+        <h2 style="margin-top:27px;">{{selectedPizza.name}}  <small>{{status}}</small></h2>
+        <hr class="soften" />
+        <span class="orderedTime"><time>{{ selectedPizzaDetails.oreder_time | amCalendar }}</time></span>
+        <div class="row">
+          <div class="col-md-5">
+
+          <h3 class="text-info">Përbërja <span class="lb-price">{{pizzaDetails.price}}</span></h3>
+          <p class="progress-label">Diametri: </p>
+          <div class="progress">              
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{pizzaDetails.diameter_percent}}%">
+                {{pizzaDetails.diameter_cm}} cm
+              </div>
+          </div>
+          <ul class="list-group list-unstyled">
+            <li ng-repeat="i in selectedPizza.ingredients">
+              <a href="#" class="list-group-item bg_{{i.quantity}}">
+                <img class="ingredient_image" src="http://porosit-pica.herokuapp.com/img/ingredients/{{i.ingredient.image}}" alt="">
+                <h4 class="list-group-item-heading" style="padding-left:10px;">{{i.ingredient.name}}</h4>
+                <p class="list-group-item-text quantityToString">{{ pizzaQuantityArray[i.quantity] }}</p>
+              </a>            
+            </li>
+          </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-1">
+
+          <h3 class="text-info">Detaje</h3>
+          <h4>{{selectedPizza.user_id.name}} {{selectedPizza.user_id.surname}}</h4>
+            <ul class="list-unstyled">
+              <li><span class="glyphicon glyphicon-earphone" style="color: #31708f"></span> {{selectedPizza.user_id.phone}}</li>
+              <li><span class="glyphicon glyphicon-envelope" style="color: #31708f"></span> {{selectedPizza.user_id.email}}</li>
+            </ul>
+
+            <h4>Adresa  {{distance}}</h4>
+            <p>{{selectedPizza.address}}</p>
+            <map center="{{selectedPizzaDetails.orderCoords.latitude}}, {{selectedPizzaDetails.orderCoords.longitude}}" zoom="14">
+              <marker position="{{selectedPizzaDetails.orderCoords.latitude}}, {{selectedPizzaDetails.orderCoords.longitude}}" title="Klienti"></marker>
+
+              <marker position="{{selectedPizzaDetails.deliverer_id.coords.latitude}}, {{selectedPizzaDetails.deliverer_id.coords.longitude}}" title="Shpërndarësi"></marker>
+            </map>    
+            <h4>Stafi</h4>
+            <ul class="list-unstyled">
+              <li><span class="glyphicon glyphicon-fire" style="color: #31708f"></span> Picieri: {{selectedPizzaDetails.pizzaiolo_id.name || "Asnjë" }} {{selectedPizzaDetails.pizzaiolo_id.surname}}</li>
+              <li><span class="glyphicon glyphicon-road" style="color: #31708f"></span> Shpërndarësi:  {{selectedPizzaDetails.deliverer_id.name || "Asnjë"}} {{selectedPizzaDetails.deliverer_id.surname}}</li>
+            </ul>
+          </div>          
+        </div>
+        </div>
+        <div ng-hide="isSelected" class="col-md-8">
+          <div class="jumbotron">
+            <div class="container">
+              <h1>Mirësevini!</h1>
+              <p>Kjo është faqja administrative e projektit Picieri. Për të filluar zgjidh një nga picat qe listohen në rubrikat në te majtë.</p>
+
+              <p>Kontakto autorin: <a href="https://github.com/StefanPrifti">stefanprifti</a> @ GitHub</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+<!--     {{picieriID}}
+    {{picieriToken}} -->

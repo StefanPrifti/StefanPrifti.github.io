@@ -1,6 +1,25 @@
 
-var app = angular.module('app', ['ngMap', 'angularMoment']);
+var app = angular.module('app', ['ngMap', 'angularMoment', 'ui.router']);
+app.config(['$stateProvider', function ($stateProvider) {
+        var home = {
+                name: 'home',
+                url: '/',
+                templateUrl: 'partials/main.html'
+            },
+            identifikohu = {
+                name: 'identifikohu',
+                url: '/identifikohu',
+                parent: home,
+                templateUrl: 'partials/identifikohu.html'
+            };
 
+        $stateProvider.state(home);
+        $stateProvider.state(identifikohu);
+    }]);
+
+app.run(['$state', function ($state) {
+   $state.transitionTo('home');
+}]);
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
@@ -49,7 +68,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 			$http.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=41.319155,19.793342&destinations=41.327583,%2019.808561&mode=driving&language=en-US&key=AIzaSyCEjAzac7pwBhe3L4bU3Ii5IPrP95bzE5E")
 			.then(function (response) {
 				console.log(response);
-				
+
 			}, function (response) {
 
 			});
