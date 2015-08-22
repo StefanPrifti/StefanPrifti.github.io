@@ -155,7 +155,9 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 			localStorage.setItem("picieriToken", response.data.token);
 			
 		    console.log(response.data);
-    		$location.path("/");
+
+		    if (response.data.success == true)
+    			$location.path("/");
 
 		}, function(response) {
 		    console.log("Deshtim, mbase me CORS " + response);
