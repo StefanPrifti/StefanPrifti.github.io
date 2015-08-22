@@ -1,24 +1,26 @@
 
 var app = angular.module('app', ['ngMap', 'angularMoment', 'ui.router']);
-app.config(['$stateProvider', function ($stateProvider) {
-        var home = {
-                name: 'home',
-                url: '/',
-                templateUrl: 'partials/main.html'
-            },
-            identifikohu = {
-                name: 'identifikohu',
-                url: '/identifikohu',
-                templateUrl: 'partials/identifikohu.html'
-            };
+// app.js
 
-        $stateProvider.state(home);
-        $stateProvider.state(identifikohu);
-    }]);
-
-app.run(['$state', function ($state) {
-   $state.transitionTo('home');
-}]);
+app.config(function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/');
+    
+    $stateProvider
+        
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('home', {
+            url: '/',
+            templateUrl: 'partials/main.html'
+        })
+        
+        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        .state('identifikohu', {
+            url: '/identifikohu',
+            templateUrl: 'partials/identifikohu.html'    
+        });
+        
+});
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
