@@ -151,15 +151,17 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 
 			$scope.user = response.data;
 
-			$scope.picieriID = response.data.id;
-			$scope.picieriToken = response.data.token;
-			localStorage.setItem("picieriID", response.data.id);
-			localStorage.setItem("picieriToken", response.data.token);
-			
-		    console.log(response.data);
+			if (typeof response.data.id !== "undefined") {
+				$scope.picieriID = response.data.id;
+				$scope.picieriToken = response.data.token;
+				localStorage.setItem("picieriID", response.data.id);
+				localStorage.setItem("picieriToken", response.data.token);
+				
+				 console.log(response.data);
 
-		    if (typeof response.data.id !== "undefined")
-    			$location.path("/");
+				 if (typeof response.data.id !== "undefined")
+					$location.path("/");	
+			}
 
 		}, function(response) {
 		    console.log("Deshtim, mbase me CORS " + response);
