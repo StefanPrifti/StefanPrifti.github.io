@@ -19,6 +19,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/identifikohu',
             templateUrl: 'partials/identifikohu.html'    
         });
+
+        // use the HTML5 History API
+        $locationProvider.html5Mode(true);
         
 });
 
