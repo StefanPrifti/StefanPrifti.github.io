@@ -34,9 +34,9 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 	console.log($scope.picieriToken);
 
 	if (!(typeof $scope.picieriToken !== "undefined"))
-		$location.path("/");
-	else
 		$location.path("/identifikohu");
+	else
+		$location.path("/");
 
 	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
 	.success(function (response) {
