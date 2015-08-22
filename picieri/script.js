@@ -33,10 +33,10 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 
 	console.log($scope.picieriToken);
 
-	if (!(typeof $scope.picieriToken !== "undefined"))
-		$location.path("/identifikohu");
-	else
+	if (!((typeof $scope.picieriToken !== "undefined") || ($scope.picieriToken != null)))
 		$location.path("/");
+	else
+		$location.path("/identifikohu");
 
 	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
 	.success(function (response) {
@@ -126,11 +126,11 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		}
 	}
 
-	if (localStorage.getItem("picieriID") != null) 
-	{
-		$scope.picieriID = localStorage.getItem("picieriID");
-		$scope.picieriToken = localStorage.getItem("picieriToken");
-	}
+	// if (localStorage.getItem("picieriID") != null) 
+	// {
+	// 	$scope.picieriID = localStorage.getItem("picieriID");
+	// 	$scope.picieriToken = localStorage.getItem("picieriToken");
+	// }
 
 	// console.log(localStorage.getItem("picieriID"));
 	// console.log($scope.picieriID);
@@ -163,24 +163,6 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 	}
 
 
-	$scope.getPizzaList = function () {
-		var getBack = null;
-		$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas")
-		.success(function (response) {
-		    getBack = response;
-		});
-
-		return getBack;
-	}
-
-	$scope.getSelectedPizza = function () {
-		var getBack = null;
-		$http.get("http://porosit-pica.herokuapp.com/api/getPizzaDetails/" + $scope.selectedPizzaID)
-		.success(function (response) {
-		    getBack = response[0];
-		});	
-		return getBack;
-	}	
 
 	$scope.setPizzaStatus = function (setStatus) {
 
