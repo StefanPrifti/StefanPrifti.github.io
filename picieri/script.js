@@ -32,7 +32,7 @@ app.run(function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
 
     	console.log($rootScope.loggedInUser);
-    	$location.path("/identifikohu");
+
    //    if ($rootScope.loggedInUser == null) {
    //      $location.path("/identifikohu");
 	  // } else {
@@ -42,6 +42,8 @@ app.run(function($rootScope, $location) {
     });
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
+
+	$location.path("/identifikohu");
 
 	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
 	.success(function (response) {
