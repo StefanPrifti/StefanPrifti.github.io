@@ -130,6 +130,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		$scope.picieriToken = localStorage.getItem("picieriToken");
 	}
 
+	console.log(localStorage.getItem("picieriID"));
 
 	$scope.logOut = function () {
 		localStorage.removeItem("picieriID");
