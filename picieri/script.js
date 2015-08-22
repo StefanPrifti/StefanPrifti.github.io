@@ -2,7 +2,7 @@
 var app = angular.module('app', ['ngMap', 'angularMoment', 'ui.router']);
 // app.js
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/');
     
