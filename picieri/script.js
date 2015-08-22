@@ -28,22 +28,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
 });
 
-app.run(function($rootScope, $location) {
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-
-    	console.log($rootScope.loggedInUser);
-
-   //    if ($rootScope.loggedInUser == null) {
-   //      $location.path("/identifikohu");
-	  // } else {
-   //        $location.path("/");
-   //      }
-      });
-    });
 
 app.controller('mainData', function($scope, $http, $filter, $window, $location, $rootScope, $q) {
 
-	$location.path("/identifikohu");
+	if ($rootScope.picieriToken == null)
+		$location.path("/identifikohu");
+	else
+		$location.path("/");
 
 	$http.get("http://porosit-pica.herokuapp.com/api/getorderedpizzas", {token: $scope.picieriToken})
 	.success(function (response) {
@@ -133,19 +124,20 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		}
 	}
 
-	$scope.picieriID = localStorage.getItem("picieriID");
-	$scope.picieriToken = localStorage.getItem("picieriToken");
+	if (ocalStorage.getItem("picieriID") != null) 
+	{
+		$scope.picieriID = localStorage.getItem("picieriID");
+		$scope.picieriToken = localStorage.getItem("picieriToken");
+	}
+
 
 	$scope.logOut = function () {
 		localStorage.removeItem("picieriID");
 		localStorage.removeItem("picieriToken");
-		localStorage.setItem("loggedOut", true);
-		localStorage.setItem("stopSecodTime", false);
-
 
 		$scope.picieriID = null;
 		$scope.picieriToken = null;
-		$window.location.href = 'identifikohu.html';
+		$location.path("/identifikohu");
 	}
 
 	$scope.logIn = function () {
@@ -153,12 +145,10 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
 		then(function(response) {
 
-			$rootScope.loggedInUser = response.data.token;
-			
-			$scope.user = response.data.token;
+			$scope.picieriID = response.data.id;
+			$scope.picieriToken = response.data.token;
 			localStorage.setItem("picieriID", response.data.id);
 			localStorage.setItem("picieriToken", response.data.token);
-			localStorage.setItem("loggedOut", false);
 			
 		    console.log(response.data);
     		$location.path("/");
