@@ -146,7 +146,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 
 	$scope.logIn = function (u, p) {
 
-		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
+		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: u, password: p }).
 		then(function(response) {
 
 			$scope.user = response.data;
