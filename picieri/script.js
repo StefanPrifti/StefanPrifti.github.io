@@ -144,13 +144,14 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		$location.path("/identifikohu");
 	}
 
-	$scope.logIn = function () {
+	$scope.logIn = function (u, p) {
 
 		$http.post('http://porosit-pica.herokuapp.com/api/authenticatePizzaiolo', { email: $scope.username, password: $scope.password }).
 		then(function(response) {
 
 			$scope.user = response.data;
 			console.log($scope.username);
+			console.log(u);
 
 			if (typeof response.data.id !== "undefined") {
 				$scope.picieriID = response.data.id;
