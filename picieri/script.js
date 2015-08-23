@@ -150,6 +150,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 		then(function(response) {
 
 			$scope.user = response.data;
+			console.log($scope.username);
 
 			if (typeof response.data.id !== "undefined") {
 				$scope.picieriID = response.data.id;
