@@ -7,7 +7,7 @@
         <input type="text" id="inputEmail" class="form-control" placeholder="Emri përdoruesit" ng-model="username" required autofocus>
         <label for="inputPassword" class="sr-only">Fjalëkalimi</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Fjalëkalimi" ng-model="password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="logIn({{username}}, {{password}})">Identifikohu</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="logIn()">Identifikohu</button>
 
       <p class="danger text-center" style="margin-top:20px;">{{user.message}}</p>
 
