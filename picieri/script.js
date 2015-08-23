@@ -33,7 +33,7 @@ app.controller('mainData', function($scope, $http, $filter, $window, $location, 
 	if (location.hash == "/")
 		$location.path("/identifikohu");
 
-	if ((typeof $scope.picieriToken === "undefined") || ($scope.picieriToken == null))
+	if ((typeof localStorage.getItem("picieriToken") === "undefined") || (localStorage.getItem("picieriToken") == null))
 		$location.path("/identifikohu");
 	else
 		$location.path("/");
