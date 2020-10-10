@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-title" content="Sintetizimi i ligjëratës në gjuhën shqipe përmes rrjetave nervore artificiale" />
+    <title>Sintetizimi i ligjëratës në gjuhën shqipe përmes rrjetave nervore artificiale</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: .9rem;
+        line-height: 1.2;
+        margin: 100px;
+      }
+
+      audio {
+        z-index: 1;
+      }
+
+      h1 {
+        padding: 0.5rem 0 1rem 0;
+      }
+      table {
+        border-spacing: 20px 10px;
+      }
+
+      .types th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background: #edf0f7;
+        border: 1px solid #bfd2ea;
+        color: #01579b;
+        padding: 1rem;
+        z-index: 10;
+      }
+
+      tbody th {
+        text-align: left;
+        font-weight: 100;
+        font-size: 0.9rem;
+      }
+      tbody tr {
+        box-shadow: 0 1px 0 #ccc;
+      }
+      tbody th,
+      tbody td {
+        padding-bottom: 0.5rem;
+      }
+
+      ul.mos {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.mos li {
+        margin-bottom: 3rem;
+      }
+
+      div.cite {
+        font-size: 1.2em;
+    padding: 1em 1.25em;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    font-family: monospace;
+    white-space: pre-wrap;        
+      }
+    </style>
+  </head>
+
+  <body translate="no">
+    <h1>Prezantim</h1>
+    <p>Në këtë faqe paraqiten ligjërata në gjuhën shqipe të sintetizuara përmes 3 metodave të ndryshme. Ligjëratat e modelit Tacotron janë rezultat i punimit të diplomes me temë "Sintetizimi i ligjëratës në gjuhën shqipe përmes rrjetave nervore artificiale".
+
+    <p> &copy; Stefan Prifti <<a href="mailto:stefanprifti.al@gmail.com">stefanprifti.al@gmail.com</a>></p>
+
+    <h1>Demostrim i metodatve të sintetizimit të ligjëratës në gjuhën shqipe</h1>
+    <p>Në këtë demostrim paraqiten 9 ligjërata audio të gjeneruara nga 3 sisteme të ndryshme. Sistemet e përdorura për gjenerimin e ligjëratës në gjuhën shqipe janë:
+      <ul>
+        <li><a href="https://zeri.app/" rel="nofollow noopener noreferrer" target="_blank">zeri.app</a>&nbsp;(sistem q&euml; p&euml;rdor&nbsp;<a href="https://en.wikipedia.org/wiki/Concatenative_synthesis" rel="nofollow noopener noreferrer" target="_blank">sintez&euml;n me nj&euml;si me bashkim</a>)</li>
+        <li><a href="http://espeak.sourceforge.net/" rel="nofollow noopener noreferrer" target="_blank">eSpeak</a>&nbsp;(sistem q&euml; p&euml;rdor&nbsp;<a href="https://en.wikipedia.org/wiki/Formant" rel="nofollow noopener noreferrer" target="_blank">sintez&euml;n formante</a>)<br /></li>
+        <li>Modeli&nbsp;<a href="https://arxiv.org/abs/1703.10135" rel="nofollow noopener noreferrer" target="_blank">Tacotron</a>&nbsp;(sistem q&euml; p&euml;rb&euml;het nga nj&euml; model me&nbsp;<a href="https://en.wikipedia.org/wiki/Artificial_neural_network" rel="nofollow noopener noreferrer" target="_blank">rrjeta nervore</a>)</li>
+      </ul>
+      Këto rregjistrime u përdorën në pyetësorin "<a href="https://www.questionpro.com/t/ARIRLZizWI" target="new">Pyetësor mbi metodat e sintetizimit të ligjëratës në gjuhën shqipe</a>" për të përcaktuar metodën që sintetizon ligjëratën më të saktë dhe me tingëllim më të natyrshëm. Sipas rezultateve të datës 10 tetor, 2020 modeli Tacotron u vlerësua me 87.75% të votave, zeri.app me 6.4% dhe eSpeak me 5.84%.</p>
+
+    </p>
+    <table>
+      <thead>
+        <tr class="types">
+          <td></td>
+          <th>zeri.app</th>
+          <th>eSpeak</th>
+          <th>Modeli Tacotron</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Metoda e sitetizimit të ligjëratës:</th>
+          <td>
+            Sintetizimi me bashkim
+          </td>
+          <td>
+            Sintetizimi formant.
+          </td>
+          <td>
+            Sintetizimi me rrjeta nervore artificiale.
+          </td>
+        </tr>
+        <tr>
+          <th>Ti Shqipëri më jep nder, më jep emrin shqipëtar.</th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/1.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/1.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/1.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Gjergji ishte biri i princit të Krujës, Gjon Kastriotit dhe i
+            Vojsavës, bijë e familjes feudale të Pollogut.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/2.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/2.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/2.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Besëlidhja e Lezhës përgjithësisht pranohet si pikënisje e krijimit
+            të shtetit të përqendruar shqiptar nga Skënderbeu.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/4.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/4.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/4.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Unë të pagëzoj në emër të Atit, të Birit, e të Shpirtit të Shenjtë!
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/3.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/3.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/3.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Xhubleta është një veshje tradicionale shqiptare që ka origjinë nga
+            kultura e lashtë mesdhetare e periudhës së neolitit.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/5.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/5.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/5.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Orakulli i Dodonës, i përfaqësuar nga një lis i lashtë, ka ekzistuar
+            që në mijëvjeçarin e dytë përpara erës sonë.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/6.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/6.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/6.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Algoritmat e nxënies së thelluar janë ideuar që në vitet
+            gjashtëdhjetë...
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/7.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/7.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/7.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            ...por gjetën përdorim vetëm kohët e fundit për arsye të rritjes së
+            fuqisë kompjuterike dhe të dhënave.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/8.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/8.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/8.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Takotron është një model që sintetizon ligjëratë edhe në gjuhën
+            shqipe.
+          </th>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/zeri/9.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/e-speak/9.mp3"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source
+                src="speech-synthesis-samples/tacotron/9.wav"
+                type="audio/mpeg"
+              />
+              Shfletuesi juaj nuk e mundëson luajtjen e audios.
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>Shëmbuj të sintetizimit të ligjëratës përmes modelit Tacotron</h1>
+    <p>Në vijim paraqiten 10 ligjërata në gjuhën shqipe të sintetizuara nga modeli Tacotron. Këto rregjistrime u përdorën në pyetësorin "<a href="https://www.questionpro.com/t/ARIRLZizWI" target="new">Pyetësor mbi metodat e sintetizimit të ligjëratës në gjuhën shqipe</a>" për të përcaktuar shkallën MOS (Mean Opinion Score) të ligjërimeve të sintetizuara. Sipas rezultateve të datës 10 tetor, 2020 modeli Tacotron u vlerësua me 3.952 nga 5 maksimalja.</p>
+    
+    <ul class="mos">
+      <li>
+        <p>Në Korçë është çelur sezoni turistik me paradën e karnavaleve.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/1.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>
+      <li>
+        <p>Qindra qytetarë populluan pedonalen e qytetit për të parë nga afër karnavalet.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/2.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li> 
+      <li>
+        <p>Kllounët dhe kërcimtarët me performancën e tyre sollën një atmosferë ndryshe për korçarët.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/3.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>   
+      <li>
+        <p>Gjithashtu, në këtë festival nuk kanë munguar muzika klasike, kërcimet, ballot me maska apo dhe këngët tradicionale e romantike të serenatës korçare.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/4.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>   
+      <li>
+        <p>Karnavalet më të famshme në Shqipëri janë ato të Shkodrës.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/5.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>    
+      <li>
+        <p>Organizimet e karnavaleve në qytetin e Shkodrës kanë nisur 160 vjet më parë.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/6.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>         
+      <li>
+        <p>Edhe për këtë vit festimet nisën me 4 shkurt.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/7.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>    
+      <li>
+        <p>Por për shkaqe politike mbas vitit 1943, kjo festë filloi dhe u zbeh.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/8.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>     
+      <li>
+        <p>Dhjetë vitet e fundit, kjo traditë është bërë aktive me festat emocionuese të organizuara vit pas viti.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/9.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>        
+      <li>
+        <p>Ndërkohë që tashmë kjo festë ka marrë shumë vëmendje jo vetëm nga qytetarët e Shkodrës, por dhe më gjerë.</p>
+        <audio controls>
+          <source
+            src="speech-synthesis-samples/tacotron/mos/10.wav"
+            type="audio/mpeg"
+          />
+          Shfletuesi juaj nuk e mundëson luajtjen e audios.
+        </audio>
+      </li>                         
+    </ul>
+
+    <h1>BibTeX</h1>
+    <div class="cite">
+      @misc{sq-tts,
+        author       = {Stefan Prifti},
+        title        = {Sintetizimi i ligjëratës në gjuhën shqipe përmes rrjetave nervore artificiale},
+        howpublished = {\url{http://stefanprifti.github.io/sq-tts/}},
+        year         = 2020
+      }      
+    </div>
+  </body>
+</html>
